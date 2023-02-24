@@ -1,3 +1,10 @@
+terraform {
+ backend "gcs" {
+   bucket  = "kanvas-laravel-iaac"
+   prefix  = "terraform/state"
+ }
+}
+
 provider "google" {
   project = "${var.project_id}"
   region  = local.location
