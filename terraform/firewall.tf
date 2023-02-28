@@ -1,6 +1,6 @@
 resource "google_compute_firewall" "kubernetes_ingress_rules" {
   name      = "${var.cluster_name}-${terraform.workspace}-ingress-rules"
-  network   = "${var.network_name}"
+  network   = var.network_name
   direction = "INGRESS"
 
   allow {
@@ -9,14 +9,14 @@ resource "google_compute_firewall" "kubernetes_ingress_rules" {
   }
 
   target_tags = ["kanvas-node"]
-  source_tags = ["kanvas"]
+  source_tags = ["kanvas-node"]
 
   destination_ranges = ["0.0.0.0/0"]
 }
 
 resource "google_compute_firewall" "kubernetes_egress_rules" {
   name      = "${var.cluster_name}-${terraform.workspace}-egress-rules"
-  network   = "${var.network_name}"
+  network   = var.network_name
   direction = "EGRESS"
 
   allow {

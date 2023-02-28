@@ -5,7 +5,7 @@ resource "google_container_cluster" "primary" {
   enable_autopilot   = true
 
   ip_allocation_policy {}
-  network="${var.network_name}"
+  network    = var.network_name
   subnetwork = "kanvas-cluster-private-subnet-1"
 
   node_config {
