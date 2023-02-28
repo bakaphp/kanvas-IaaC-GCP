@@ -3,10 +3,10 @@ resource "google_container_cluster" "primary" {
   location           = local.location
   initial_node_count = 1
   enable_autopilot   = true
-
+  network            = var.network_name
+  subnetwork         = "kanvas-cluster-private-subnet-1"
+  networking_mode    = "VPC_NATIVE"
   ip_allocation_policy {}
-  network    = var.network_name
-  subnetwork = "kanvas-cluster-private-subnet-1"
 
   node_config {
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
