@@ -9,9 +9,8 @@ resource "google_compute_firewall" "kubernetes_ingress_rules" {
   }
 
   target_tags = ["kanvas-node"]
-  source_tags = ["kanvas-node"]
 
-  destination_ranges = ["0.0.0.0/0"]
+  source_ranges = ["0.0.0.0/0"]
 }
 
 resource "google_compute_firewall" "kubernetes_egress_rules" {
